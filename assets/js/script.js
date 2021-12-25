@@ -43,8 +43,8 @@ document
         }
     });
 
-const requestToGithubAndShowResult = async () => {
-    const requestInfo = await requestAllInfoGithub('Steinnx', '1', '1');
+const requestToGithubAndShowResult = async (nombre, pagina, repoPagina) => {
+    const requestInfo = await requestAllInfoGithub(nombre, pagina, repoPagina);
 
     const userInfo = requestInfo[0];
     const userInfoRepo = requestInfo[1];
