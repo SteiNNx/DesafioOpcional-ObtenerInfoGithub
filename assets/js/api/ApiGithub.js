@@ -20,7 +20,7 @@ const request = async (requestUrl, config = {}) => {
 
         return await response.json();
     } catch (error) {
-        console.error({ error });
+        console.error(error);
         return error;
     }
 };
@@ -30,7 +30,11 @@ const request = async (requestUrl, config = {}) => {
  * @param {string} userName nombre usuario de github 
  */
 export const getUser = async (userName) => {
-    return await request(USER_INFO(userName));
+    try {
+        return await request(USER_INFO(userName));
+    } catch (error) {
+        throw new Error('Error, request getUser to github');
+    }
 }
 
 /**
@@ -40,7 +44,11 @@ export const getUser = async (userName) => {
  * @param {string} perPage cantidad por pagina
  */
 export const getRepo = async (userName, page, perPage) => {
-    return await request(USER_GET_REPOS_BY_PAGE_PER_PAGE(userName, page, perPage));
+    try {
+        return await request(USER_GET_REPOS_BY_PAGE_PER_PAGE(userName, page, perPage));
+    } catch (error) {
+        throw new Error('Error, request getRepo to github');
+    }
 }
 
 /**
