@@ -15,6 +15,7 @@ const request = async (requestUrl, config = {}) => {
         const { ok } = response;
 
         if (!ok) {
+            alert('No existe usuario');
             throw new Error('Error, en petiticion request');
         }
 
@@ -30,11 +31,7 @@ const request = async (requestUrl, config = {}) => {
  * @param {string} userName nombre usuario de github 
  */
 export const getUser = async (userName) => {
-    try {
-        return await request(USER_INFO(userName));
-    } catch (error) {
-        throw new Error('Error, request getUser to github');
-    }
+    return await request(USER_INFO(userName));
 }
 
 /**
@@ -44,11 +41,7 @@ export const getUser = async (userName) => {
  * @param {string} perPage cantidad por pagina
  */
 export const getRepo = async (userName, page, perPage) => {
-    try {
-        return await request(USER_GET_REPOS_BY_PAGE_PER_PAGE(userName, page, perPage));
-    } catch (error) {
-        throw new Error('Error, request getRepo to github');
-    }
+    return await request(USER_GET_REPOS_BY_PAGE_PER_PAGE(userName, page, perPage));
 }
 
 /**
