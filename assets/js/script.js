@@ -37,6 +37,7 @@ document
                 const repoPagina = getValueById('repoPagina');
                 requestToGithubAndShowResult(nombre, pagina, repoPagina);
             } catch (error) {
+                alert('No existe usuario');
                 console.error({ error });
             }
         }
